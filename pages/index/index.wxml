@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button  bindgetuserinfo="getUserInfo"> 获取用户头像和昵称</button>
+    <button  bindtap="getCode"> 获取用户code</button>
+	<view>用户code:<input type="text" value="{{usercode}}" /></view>
+
+  </view>
+  <view>
+	  <view>未绑定的用户名<input type="text" bindinput="getNewUsername" class="inputusername" value="tonyhappystyle" /></view>
+	  <view>密码<input type="password" bindinput="getNewPassword" class="inputpassword" value="secret" /></view>
+	  <view>
+		  <view>未绑定用户名：{{new_username}}</view>
+		  <view>密码：{{new_password}}</view>
+		  <view><button bindtap="newLogin">模拟未绑定用户登陆，获取BearerToken值</button></view>
+		  <view>BearerToken值：<input type="text" value="{{BearToken}}" /></view>
+	  </view>
+	  <view>　　　　　</view><view>　　　　　</view>
+	  <view>已绑定的用户名<input type="text" bindinput="getUsername" class="inputusername" value="tonyhappystyle" /></view>
+	  <view>密码<input type="password" bindinput="getPassword" class="inputpassword" value="secret" /></view>
+  </view>
+
+</view>
