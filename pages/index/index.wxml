@@ -13,7 +13,7 @@
 		  <view>未绑定用户名：{{new_username}}</view>
 		  <view>密码：{{new_password}}</view>
 		  <view><button bindtap="newLogin">模拟未绑定用户登陆，获取BearerToken值</button></view>
-		  <view>BearerToken值：<input type="text" value="{{BearToken}}" /></view>
+		  <view>BearToken值：<input type="text" value="{{bearToken}}" /></view>
 	  </view>
 	  <view>　　　　　</view><view>　　　　　</view>
 	  <view>已绑定的用户名<input type="text" bindinput="getUsername" class="inputusername" value="tonyhappystyle" /></view>

@@ -7,8 +7,8 @@ Page({
 	host: 'http://laravel7.test/api/v1/',
     userInfo: {},
 	usercode: '',
-	BearToken:'',
-	new_username: 'tonyhappystyle',
+	bearToken: '',
+	new_username: 'tonyhappystyle@163.com',
 	new_password:'secret',
 	
   },
@@ -78,15 +78,19 @@ Page({
 		  responseType: 'text',
 		  success : (res) =>{
 			  console.log(res.data)
-			  this.setData({
-				  BearToken: res.data.access_token
-			  })
-			  //保存 token 和过期时间，然后返回
-			  const accessToken = res.data.access_token
-			  const accessTokenExpiredAt = new Date().getTime() + res.data.expires_in * 1000
-	  
-			  wx.setStorageSync('access_token', accessToken)
-			  wx.setStorageSync('access_token_expired_at', accessTokenExpiredAt)
+			  if(res.data.access_token)
+			  {
+				  this.setData({
+				  bearToken: res.data.access_token
+				})
+				  //保存 token 和过期时间，然后返回
+				  const accessToken = res.data.access_token
+				  const accessTokenExpiredAt = new Date().getTime() + res.data.expires_in * 1000
+		  
+				  wx.setStorageSync('access_token', accessToken)
+				  wx.setStorageSync('access_token_expired_at', accessTokenExpiredAt)
+			  }
+			  
 			  
 		  },
 		  fail: (res) =>{
