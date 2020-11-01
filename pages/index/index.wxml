@@ -1,23 +1,35 @@
 <!--index.wxml-->
 <view class="container">
+  <view>用户认证BearToken值:</view>
+  <view>
+    {{ storage_accessToken?storage_accessToken:'无'  }}
+  </view>
+  <view>　　　　　</view><view>　　　　　</view>
+  <view>过期时间戳:</view>
+  <view>
+    {{ storage_expired_at  }}
+  </view>
+  <view>　　　　　</view><view>　　　　　</view>
+  <view>　　　　　</view><view>　　　　　</view>
   <view class="userinfo">
-    <button  bindgetuserinfo="getUserInfo"> 获取用户头像和昵称</button>
+    <!-- <button  bindgetuserinfo="getUserInfo"> 获取用户头像和昵称</button> -->
     <button  bindtap="getCode"> 获取用户code</button>
 	<view>用户code:<input type="text" value="{{usercode}}" /></view>
 
   </view>
   <view>
-	  <view>未绑定的用户名<input type="text" bindinput="getNewUsername" class="inputusername" value="tonyhappystyle" /></view>
+	  <view>未绑定的用户名<input type="text" bindinput="getNewUsername" class="inputusername" value="tonyhappystyle@163.com" /></view>
 	  <view>密码<input type="password" bindinput="getNewPassword" class="inputpassword" value="secret" /></view>
 	  <view>
 		  <view>未绑定用户名：{{new_username}}</view>
 		  <view>密码：{{new_password}}</view>
 		  <view><button bindtap="newLogin">模拟未绑定用户登陆，获取BearerToken值</button></view>
-		  <view>BearToken值：<input type="text" value="{{bearToken}}" /></view>
+		  <view>BearerToken值：<input type="text" value="{{BearToken}}" /></view>
 	  </view>
 	  <view>　　　　　</view><view>　　　　　</view>
-	  <view>已绑定的用户名<input type="text" bindinput="getUsername" class="inputusername" value="tonyhappystyle" /></view>
-	  <view>密码<input type="password" bindinput="getPassword" class="inputpassword" value="secret" /></view>
+	  <view><button bindtap="refreshToken">模拟刷新BearerToken值或者过期再次登录</button></view>
+    <view>　　　　　</view><view>　　　　　</view>
+    <view><button bindtap="passExpiredAt">令BearerToken值过期</button></view>
   </view>
 
 </view>
