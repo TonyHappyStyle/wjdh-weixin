@@ -225,31 +225,46 @@ Page({
 				url: this.data.host+'authorizations/current',
 				method: 'DELETE',
 				 header: {
-					  'Authorization': 'Bearer ' + this.data.BearToken
+					  'Authorization': 'Bearer ' + wx.getStorageSync('access_token')
 					},
 				dataType: 'json',
 				responseType: 'text',
 				success : (res) =>{
-						  try {
-						  	wx.clearStorageSync()
-						  	this.setData({
-						  	  storage_accessToken : '已退出登录',
-							  storage_expired_at: '',
-							  BearToken: ''
-						  	})
-						  	wx.showModal({
-						  	  title: '成功',
-						  	  content: '已经退出登录'
-						  	})
-						    } catch(e) {
-						  	wx.showModal({
-						  	  title: '失败',
-						  	  content: '退出失败'
-						  	})
-							}
-				  
-					}
-							
+                  console.log(res)
+                  console.log(res.statusCode)
+                  if(res.statusCode == 500){
+                    wx.showModal({
+                      title: '失败',
+                      content: '退出失败'
+                    })
+                  }else if(res.statusCode == 204){
+                     wx.clearStorageSync()
+                    this.setData({
+                      storage_accessToken : '已退出登录',
+                    storage_expired_at: '',
+                    BearToken: ''
+                    })
+                    wx.showModal({
+                      title: '成功',
+                      content: '已经退出登录'
+                    })
+                  }else {
+                    wx.showModal({
+                      title: '失败',
+                      content: '未连接服务器'
+                    })
+                  }
+
+
+
+					},
+				fail :(res) =>{
+					wx.showModal({
+					  title: '失败',
+					  content: '退出失败'
+					})
+				}
+
 			  })
 	  },
 	  toRegister:function(){

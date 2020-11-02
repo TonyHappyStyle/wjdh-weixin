@@ -43,18 +43,23 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "token-test",
+          "pathName": "pages/test-token/index",
+          "scene": null
+        }
+      ]
     }
   }
 }
