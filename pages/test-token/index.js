@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-	host: 'https://tc.mg.cool/api/v1/',
+	host: 'https://laravel7.test/api/v1/',
     userInfo: {},
 	usercode: '',
 	BearToken:'',
@@ -112,14 +112,6 @@ Page({
       }
 	  })
   },
-  // getCode:function(){
-  //    // 登录
-	 //  wx.login({
-	 //    success: res => {
-  //     return res.code
-	 //    }
-	 //  })
-  // },
   refreshToken:function(){
       // 从缓存中取出 Token
       const accessToken = wx.getStorageSync('access_token')
@@ -127,23 +119,18 @@ Page({
 
       // 如果 token 过期了，则调用刷新方法
       if (accessToken && new Date().getTime() > expiredAt) {
-
+			console.log('accessToken && new Date().getTime() > expiredAt')
         try {
           wx.request({
             url: this.data.host+'authorizations/current',
             method: 'put',
-            data: {
-          	  code: this.getCode,
-          	  username: this.data.new_username,
-          	  password: this.data.new_password
-            },
              header: {
-                  'Authorization': 'Bearer ' + this.data.BearToken
+                  'Authorization': 'Bearer ' + accessToken
                 },
             success : (res) =>{
           	  console.log(res.data)
           	  this.setData({
-          		  BearToken: '刷新'+res.data.access_token
+          		  BearToken: '刷新'+res.data.storage_accessToken
           	  })
           	  //保存 token 和过期时间，然后返回
           	  let accessToken = res.data.access_token
@@ -151,11 +138,21 @@ Page({
 
           	  wx.setStorageSync('access_token', accessToken)
           	  wx.setStorageSync('access_token_expired_at', accessTokenExpiredAt)
+			  this.setData({
+				  storage_accessToken :accessToken,
+				  storage_expired_at :accessTokenExpiredAt
+			  })
             wx.showModal({
                 title: '成功',
                 content: '已经成功刷新BearToken并保存了BearToken'
               })
-            }
+            },
+			fail: (res) =>{
+				wx.showModal({
+				    title: '失败',
+				    content: '刷新BearToken失败'
+				  })
+			}
           })
 
         } catch (err) {
@@ -218,6 +215,47 @@ Page({
     this.setData({
       storage_expired_at : 0
     })
-  }
-
-})
+	wx.showModal({
+	  title: '成功',
+	  content: '已经设置token值为过期'
+	})
+  },
+  getLogout:function(){
+			  wx.request({
+				url: this.data.host+'authorizations/current',
+				method: 'DELETE',
+				 header: {
+					  'Authorization': 'Bearer ' + this.data.BearToken
+					},
+				dataType: 'json',
+				responseType: 'text',
+				success : (res) =>{
+						  try {
+						  	wx.clearStorageSync()
+						  	this.setData({
+						  	  storage_accessToken : '已退出登录',
+							  storage_expired_at: '',
+							  BearToken: ''
+						  	})
+						  	wx.showModal({
+						  	  title: '成功',
+						  	  content: '已经退出登录'
+						  	})
+						    } catch(e) {
+						  	wx.showModal({
+						  	  title: '失败',
+						  	  content: '退出失败'
+						  	})
+							}
+				  
+					}
+							
+			  })
+	  },
+	  toRegister:function(){
+		  console.log('尝试跳转注册页')
+		  wx.redirectTo({
+		    url: '/pages/test-register/index'
+		  })
+	  }
+  })

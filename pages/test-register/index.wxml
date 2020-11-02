@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+	<view>
+		手机号：{{phone}}
+	</view>
+  <view>
+	  手机号<input type="text" bindinput="getPhone" class="inputusername" value="17600381130"/><button bindtap="getCode">获取验证码</button>
+  </view>
+  <view>
+	  验证码<input type="text" /><button bindtap="">发送验证码</button>
+  </view>
+  <view>
+  	  密码<input type="text" />
+  </view>
+</view>

@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
+	"pages/test-register/index",
+    "pages/test-token/index",
     "pages/logs/logs"
   ],
   "window": {
