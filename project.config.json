@@ -62,7 +62,14 @@
         },
         {
           "name": "pages/test-login/test-login",
-          "pathName": "pages/test-login",
+          "pathName": "pages/test-login/test-login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test-register/index",
+          "pathName": "pages/test-register/index",
+          "query": "",
           "scene": null
         }
       ]

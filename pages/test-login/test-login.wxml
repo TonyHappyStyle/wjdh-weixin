@@ -1,8 +1,17 @@
 <!--pages/test-login.wxml-->
+  <view class="userinfo">
+    <!-- <button  bindgetuserinfo="getUserInfo"> 获取用户头像和昵称</button> -->
+    <button  bindtap="getUserCode"> 获取用户code</button>
+  <view>测试用户code:<input type="text" value="{{usercode}}" /></view>
+
+  </view>
 <view>
-	输入手机号<input type=text bindinput="getPhone" value="{{phone}}" />
-	输入验证码<input type=text bindinput="inputCode" value="1234" />
+
+  <view>host:{{host}}</view>
+	输入手机号<input type="text" bindinput="getPhone" value="{{phone}}" />
+	输入验证码<input type="text" bindinput="inputCode" value="{{phoneCode}}" />
 </view>
 <view>
 	<button bindtap="getCode">获取验证码</button>
+  <button bindtap="toLogin">登录</button>
 </view>

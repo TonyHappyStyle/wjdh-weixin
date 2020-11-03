@@ -16,7 +16,6 @@ Page({
   },
   //事件处理函数
   onLoad: function () {
-
   },
   onShow:function(){
 
@@ -34,7 +33,7 @@ Page({
 				verificationKey:res.data.key,
 				expired_at:res.data.expired_at
 			})
-			
+
 	    },
 		fail: (res) =>{
 			wx.showModal({
@@ -52,7 +51,7 @@ Page({
   getPassword:function(e){
 	 this.setData({
 		 password:e.detail.value
-	 })  
+	 })
   },
   getCode:function(e){
 	  this.setData({
@@ -82,11 +81,11 @@ Page({
 				verification_key: this.data.verificationKey,
 				verification_code: this.data.verificationCode,
 				code: this.data.usercode
-				
+
 	  		},
 	    success : (res) =>{
 	  			console.log(res)
-	  			
+
 	    },
 	  		fail: (res) =>{
 	  			wx.showModal({
@@ -97,5 +96,5 @@ Page({
 	  })
   }
 
- 
+
   })

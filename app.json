@@ -3,7 +3,7 @@
     "pages/test-register/index",
     "pages/test-token/index",
     "pages/logs/logs",
-    "pages/test-login"
+    "pages/test-login/test-login"
   ],
   "window": {
     "backgroundTextStyle": "light",

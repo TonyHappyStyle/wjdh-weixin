@@ -16,7 +16,6 @@ Page({
   },
   //事件处理函数
   onLoad: function () {
-
   },
   onShow:function(){
     // 从缓存中取出 Token
