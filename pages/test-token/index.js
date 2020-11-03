@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-	host: 'https://laravel7.test/api/v1/',
+	host: 'https://tc.mg.cool/api/v1/',
     userInfo: {},
 	usercode: '',
 	BearToken:'',

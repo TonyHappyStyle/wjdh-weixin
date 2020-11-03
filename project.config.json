@@ -57,6 +57,12 @@
         {
           "name": "token-test",
           "pathName": "pages/test-token/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test-login/test-login",
+          "pathName": "pages/test-login",
           "scene": null
         }
       ]

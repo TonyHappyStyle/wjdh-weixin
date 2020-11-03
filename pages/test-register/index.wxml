@@ -3,13 +3,20 @@
 	<view>
 		手机号：{{phone}}
 	</view>
+	<view>验证码key值：{{verificationKey}}</view>
+	<view>验证码code值:{{verificationCode}}</view>
+	<view>过期时间:{{expired_at}}</view>
   <view>
-	  手机号<input type="text" bindinput="getPhone" class="inputusername" value="17600381130"/><button bindtap="getCode">获取验证码</button>
+	  手机号<input type="text" bindinput="getPhone" class="inputusername" value="17600381130"/><button bindtap="getCodeKey">获取验证码</button>
   </view>
   <view>
-	  验证码<input type="text" /><button bindtap="">发送验证码</button>
+	  输入验证码<input type="text" bindinput="getCode" value="{{verificationCode}}"/>
   </view>
   <view>
-  	  密码<input type="text" />
+  	  密码<input type="text" bindinput="getPassword" value="{{password}}" />
   </view>
+  <view>
+  	  小程序code<input type="text" value="{{usercode}}" /><button bindtap="getWeixinCode">获取小程序code</button>
+  </view>
+  <view><button bindtap="register">注册</button></view>
 </view>

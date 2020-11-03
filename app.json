@@ -1,8 +1,9 @@
 {
   "pages": [
-	"pages/test-register/index",
+    "pages/test-register/index",
     "pages/test-token/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/test-login"
   ],
   "window": {
     "backgroundTextStyle": "light",
