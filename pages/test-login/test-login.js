@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    host: 'https://tc.mg.cool/api/v1/',
+    host: 'http://laravel7.test/api/v1/',
     phone: '17600381130',
     verification_key: '',
     phoneCode: '1234',
